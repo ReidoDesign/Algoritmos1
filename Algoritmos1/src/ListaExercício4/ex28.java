@@ -42,7 +42,7 @@ public class ex28 {
         int[][] m = new int[tl][tc];
         return m;
     }
-
+    
     public static int[][] popula(int[][] m) {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[i].length; j++) {
@@ -61,7 +61,6 @@ public class ex28 {
             System.out.println("");
         }
     }
-
 
     public static void resultadoSoma(int[][] m) {
         for (int i = 0; i < m.length; i++) {
