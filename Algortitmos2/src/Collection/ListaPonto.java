@@ -5,7 +5,7 @@ package Collection;
  * @author Vitor
  */
 public class ListaPonto {
-    
+
     //Atributos
     private int elemento;
     private int posicao;
@@ -14,10 +14,7 @@ public class ListaPonto {
     private int[] vetor;
     private int tamVetor = 0;//Tamanho do vetor
     private int circunferencia;
-    
-    
-    
-    
+
     //construtor
     public ListaPonto() {
         this.elemento = elemento;
@@ -28,10 +25,7 @@ public class ListaPonto {
         this.tamVetor++;
         this.circunferencia = 3;
     }
-    
-    
-    
-    
+
     //Getters e Setters
     public int getElemento() {
         return elemento;
@@ -64,11 +58,8 @@ public class ListaPonto {
     public void setRaio(int raio) {
         this.raio = raio;
     }
-    
-  
-    
-    
-     //Métodos
+
+    //Métodos
     public void menu() { //Método para criar MENU
         System.out.println("==== MENU =====");
         System.out.println("(1) - Adicionar um elemento no final da coleção;");
@@ -84,7 +75,7 @@ public class ListaPonto {
     public void adicionaFinal(ListaPonto p) {
         for (int i = 0; i < vetor.length; i++) {
             if (this.vetor[i] == 0) { //Verifica a primeira posição vaga no vetor
-                this.vetor[i] = p.elemento; //Coloca o elemento no valor
+                this.vetor[i] = p.elemento; //Coloca o elemento no vetor
                 this.tamVetor++;  //Acrescenta 1 no tamanho do vetor;
                 break;
             }
@@ -93,13 +84,17 @@ public class ListaPonto {
 
     //Adiciona elemento em uma determinada posição
     public void adicionaPosicao(ListaPonto p) {
-        for (int i = this.tamVetor - 1; i >= posicao; i--) {//desloca os vetores a partir da posição para direita
-            this.vetor[i + 1] = this.vetor[i]; //Passa os valores da próxima posição para a posição atual
+        if (p.posicao < tamVetor) { //Verifica se á posição informada é válida;
+            for (int i = this.tamVetor - 1; i >= posicao; i--) {//desloca os vetores a partir da posição para direita
+                this.vetor[i + 1] = this.vetor[i]; //Passa os valores da próxima posição para a posição atual
+            }
+            this.vetor[p.posicao] = p.elemento; //Insere o elemento na posição
+            this.tamVetor++; //Acrescenta 1 no tamanho do vetor;
+        } else {
+            System.out.println("POSIÇÃO INVÁLIDA!");
         }
-        this.vetor[p.posicao] = p.elemento; //Insere o elemento na posição
-        this.tamVetor++; //Acrescenta 1 no tamanho do vetor;
     }
-
+    
     //Retorna indice do elemento buscado
     public int indice(ListaPonto p) {
         for (int i = 0; i < vetor.length; i++) {

@@ -12,9 +12,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         ListaPonto p = new ListaPonto();
 
-        int e;
         int option;
-        int indice;
         do {
             p.menu();
             option = input.nextInt();
