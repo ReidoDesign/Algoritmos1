@@ -4,14 +4,14 @@ package Collection;
  *
  * @author Vitor
  */
-public class Ponto {
+public class ListaPonto {
 
     private int elemento;
     private int[] vetor;
     private int tamVetor = 0;//Tamanho do vetor
     private int circunferencia;
 
-    public Ponto() {
+    public ListaPonto() {
         this.elemento = elemento;
         this.vetor = new int[10];
         this.tamVetor++;
@@ -30,7 +30,7 @@ public class Ponto {
     }
 
     //Adicionar elemento no final do vetor
-    public void adicionaFinal(Ponto p, int e) {
+    public void adicionaFinal(ListaPonto p, int e) {
         for (int i = 0; i < vetor.length; i++) {
             if (this.vetor[i] == 0) { //Verifica a primeira posição vaga no vetor
                 this.vetor[i] = e; //Coloca o elemento no valor
@@ -41,8 +41,8 @@ public class Ponto {
     }
 
     //Adiciona elemento em uma determinada posição
-    public void adicionaPosicao(Ponto p, int posicao, int e) {
-        for (int i = this.tamVetor - 1; i >= posicao; i -= 1) {//desloca os vetores a partir da posição para direita
+    public void adicionaPosicao(ListaPonto p, int posicao, int e) {
+        for (int i = this.tamVetor - 1; i >= posicao; i --) {//desloca os vetores a partir da posição para direita
             this.vetor[i + 1] = this.vetor[i]; //Passa os valores da próxima posição para a posição atual
         }
         this.vetor[posicao] = e; //Insere o elemento na posição
@@ -71,11 +71,11 @@ public class Ponto {
         this.tamVetor--; //diminui em -1 o tamanho do vetor;
     }
 
-    //Descobre o MAIOR PONTO elemento do vetor
-    public double maior(Ponto p) {
+    //Descobre o MAIOR PONTO do vetor
+    public double maior(ListaPonto p) {
         double max = 0;
         for (int i = 0; i < this.tamVetor - 1; i++) {
-            double x = Math.pow(vetor[i] - vetor[i + 1], 2);
+            double x = Math.pow(vetor[i] - vetor[i + 1], 2); //Calcula o ponto usando dois elementos do vetor(elemento atual e o próximo);
             if (x > max) {
                 max = x;
             }
@@ -83,11 +83,11 @@ public class Ponto {
         return max;
     }
 
-    //Descobre o MENOR PONTO elemento do vetor
-    public double menor(Ponto p) {
+    //Descobre o MENOR PONTO do vetor
+    public double menor(ListaPonto p) {
         double min = 100;
         for (int i = 0; i < this.tamVetor - 1; i++) {//O laço percorre até o ultimo elemento preenchido no vetor
-            double x = Math.pow(vetor[i] - vetor[i + 1], 2);
+            double x = Math.pow(vetor[i] - vetor[i + 1], 2); //Calcula o ponto usando dois elementos do vetor(elemento atual e o próximo);
             if (x < min) {
                 min = x;
             }
@@ -97,25 +97,25 @@ public class Ponto {
 
     //Calcula a distância entre os dois pontos mais distantes
     public double distancia(double maior, double menor) {
-        return Math.sqrt(maior + menor);
+        return Math.sqrt(maior + menor); //Calcula a raiz quadrado dos dois pontos;
     }
 
     //Armazena os pontos dentro da circunferencia no vetor novo
-    public double[] circunferencia(Ponto p, int r) {
-        double[] vc = new double[tamVetor - 1];
-        int k = 0;
+    public double[] circunferencia(ListaPonto p, int r) {
+        double[] vc = new double[tamVetor - 1]; //cria novo vetor
+        int k = 0; //contador auxiliar para contar posições do novo vetor
         for (int i = 0; i < this.tamVetor - 1; i++) {
-            double pontos = Math.pow(vetor[i] - vetor[i + 1], 2);
-            if ((pontos < r) && (pontos > p.circunferencia)) {
-                k++;
-                vc[k] = pontos;
+            double pontos = Math.pow(vetor[i] - vetor[i + 1], 2); //Calcula o ponto usando dois elementos do vetor(elemento atual e o próximo);
+            if ((pontos < r) && (pontos > p.circunferencia)) { // Verifica se o ponto está dentro do raio;
+                k++; 
+                vc[k] = pontos; //Insere o ponto dentro do novo vetor;
             }
         }
         return vc;
     }
 
     //Imprimi os pontos que estão dentro da circunferencia
-    public void impressoCentroCirc(Ponto p, double[] vc) {
+    public void impressoCentroCirc(ListaPonto p, double[] vc) {
         System.out.println("===> Pontos que estão dentro do RAIO");
         for (int i = 0; i < vc.length; i++) {
             System.out.println("Pontos: " + vc[i]);

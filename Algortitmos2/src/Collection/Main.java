@@ -10,13 +10,16 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        Ponto p = new Ponto();
+        ListaPonto p = new ListaPonto();
 
         int option;
         do {
             p.menu();
             option = input.nextInt();
             switch (option) {
+                case 0:
+                    System.out.println("ALGORITMO FINALIZADO!");
+                    break;
                 case 1:
                     System.out.print("Elemento a ser adicionado: ");
                     int e = input.nextInt();
@@ -57,7 +60,7 @@ public class Main {
                     p.impresso();
                     break;
                 default:
-                    System.out.println("ALGORITMO FINALIZADO!");
+                    System.out.println("OPÇÃO INVÁLIDA PARA O MENU!");
             }
         } while (option != 0);
     }
