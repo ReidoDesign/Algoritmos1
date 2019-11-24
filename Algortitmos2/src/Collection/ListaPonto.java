@@ -5,19 +5,70 @@ package Collection;
  * @author Vitor
  */
 public class ListaPonto {
-
+    
+    //Atributos
     private int elemento;
+    private int posicao;
+    private int indice;
+    private int raio;
     private int[] vetor;
     private int tamVetor = 0;//Tamanho do vetor
     private int circunferencia;
-
+    
+    
+    
+    
+    //construtor
     public ListaPonto() {
         this.elemento = elemento;
+        this.posicao = posicao;
+        this.indice = indice;
+        this.raio = raio;
         this.vetor = new int[10];
         this.tamVetor++;
         this.circunferencia = 3;
     }
+    
+    
+    
+    
+    //Getters e Setters
+    public int getElemento() {
+        return elemento;
+    }
 
+    public void setElemento(int elemento) {
+        this.elemento = elemento;
+    }
+
+    public int getPosicao() {
+        return posicao;
+    }
+
+    public void setPosicao(int posicao) {
+        this.posicao = posicao;
+    }
+
+    public int getIndice() {
+        return indice;
+    }
+
+    public void setIndice(int indice) {
+        this.indice = indice;
+    }
+
+    public int getRaio() {
+        return raio;
+    }
+
+    public void setRaio(int raio) {
+        this.raio = raio;
+    }
+    
+  
+    
+    
+     //Métodos
     public void menu() { //Método para criar MENU
         System.out.println("==== MENU =====");
         System.out.println("(1) - Adicionar um elemento no final da coleção;");
@@ -30,10 +81,10 @@ public class ListaPonto {
     }
 
     //Adicionar elemento no final do vetor
-    public void adicionaFinal(ListaPonto p, int e) {
+    public void adicionaFinal(ListaPonto p) {
         for (int i = 0; i < vetor.length; i++) {
             if (this.vetor[i] == 0) { //Verifica a primeira posição vaga no vetor
-                this.vetor[i] = e; //Coloca o elemento no valor
+                this.vetor[i] = p.elemento; //Coloca o elemento no valor
                 this.tamVetor++;  //Acrescenta 1 no tamanho do vetor;
                 break;
             }
@@ -41,18 +92,18 @@ public class ListaPonto {
     }
 
     //Adiciona elemento em uma determinada posição
-    public void adicionaPosicao(ListaPonto p, int posicao, int e) {
-        for (int i = this.tamVetor - 1; i >= posicao; i --) {//desloca os vetores a partir da posição para direita
+    public void adicionaPosicao(ListaPonto p) {
+        for (int i = this.tamVetor - 1; i >= posicao; i--) {//desloca os vetores a partir da posição para direita
             this.vetor[i + 1] = this.vetor[i]; //Passa os valores da próxima posição para a posição atual
         }
-        this.vetor[posicao] = e; //Insere o elemento na posição
+        this.vetor[p.posicao] = p.elemento; //Insere o elemento na posição
         this.tamVetor++; //Acrescenta 1 no tamanho do vetor;
     }
 
     //Retorna indice do elemento buscado
-    public int indice(int e) {
+    public int indice(ListaPonto p) {
         for (int i = 0; i < vetor.length; i++) {
-            if (e == vetor[i]) { //Verifica se o elemennto está no vetor
+            if (p.indice == vetor[i]) { //Verifica se o elemennto está no vetor
                 return i; // retorna o indice do elemento
             }
         }
@@ -60,12 +111,12 @@ public class ListaPonto {
     }
 
     //Remove um elemento da lista
-    public void remove(int posicao) {
-        if (posicao > this.vetor.length && posicao <= 0) { // verifica se a posição é válida sendo maior que 0 e menor que o tamanho do vetor;
+    public void remove(ListaPonto p) {
+        if (p.posicao > this.vetor.length && p.posicao <= 0) { // verifica se a posição é válida sendo maior que 0 e menor que o tamanho do vetor;
             System.out.println("Posição Inválida!");
         }
 
-        for (int i = posicao; i < this.tamVetor - 1; i++) {//Percorre o vetor a partir da posição que será removida
+        for (int i = p.posicao; i < this.tamVetor - 1; i++) {//Percorre o vetor a partir da posição que será removida
             this.vetor[i] = this.vetor[i + 1];//Passa o próximo elemento para posição removida
         }
         this.tamVetor--; //diminui em -1 o tamanho do vetor;
@@ -101,13 +152,13 @@ public class ListaPonto {
     }
 
     //Armazena os pontos dentro da circunferencia no vetor novo
-    public double[] circunferencia(ListaPonto p, int r) {
+    public double[] circunferencia(ListaPonto p) {
         double[] vc = new double[tamVetor - 1]; //cria novo vetor
         int k = 0; //contador auxiliar para contar posições do novo vetor
         for (int i = 0; i < this.tamVetor - 1; i++) {
             double pontos = Math.pow(vetor[i] - vetor[i + 1], 2); //Calcula o ponto usando dois elementos do vetor(elemento atual e o próximo);
-            if ((pontos < r) && (pontos > p.circunferencia)) { // Verifica se o ponto está dentro do raio;
-                k++; 
+            if ((pontos < p.raio) && (pontos > p.circunferencia)) { // Verifica se o ponto está dentro do raio;
+                k++;
                 vc[k] = pontos; //Insere o ponto dentro do novo vetor;
             }
         }
@@ -116,7 +167,7 @@ public class ListaPonto {
 
     //Imprimi os pontos que estão dentro da circunferencia
     public void impressoCentroCirc(ListaPonto p, double[] vc) {
-        System.out.println("===> Pontos que estão dentro do RAIO");
+        System.out.println("===> Pontos que estão dentro do RAIO <===");
         for (int i = 0; i < vc.length; i++) {
             System.out.println("Pontos: " + vc[i]);
         }

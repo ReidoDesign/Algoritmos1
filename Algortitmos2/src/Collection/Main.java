@@ -12,7 +12,9 @@ public class Main {
         Scanner input = new Scanner(System.in);
         ListaPonto p = new ListaPonto();
 
+        int e;
         int option;
+        int indice;
         do {
             p.menu();
             option = input.nextInt();
@@ -22,28 +24,28 @@ public class Main {
                     break;
                 case 1:
                     System.out.print("Elemento a ser adicionado: ");
-                    int e = input.nextInt();
-                    p.adicionaFinal(p, e);
+                    p.setElemento(input.nextInt());
+                    p.adicionaFinal(p);
                     p.impresso();
                     break;
                 case 2:
                     System.out.print("Posição a ser adicionado: ");
-                    int indice = input.nextInt();
+                    p.setPosicao(input.nextInt());
                     System.out.print("Elemento a ser adicionado: ");
-                    e = input.nextInt();
-                    p.adicionaPosicao(p, indice, e);
+                    p.setElemento(input.nextInt());
+                    p.adicionaPosicao(p);
                     p.impresso();
                     break;
                 case 3:
                     System.out.print("Elemento a ser buscado: ");
-                    int i = input.nextInt();
-                    System.out.println("Posição do elemento é " + p.indice(i));
+                    p.setIndice(input.nextInt());
+                    System.out.println("Posição do elemento é " + p.indice(p));
                     p.impresso();
                     break;
                 case 4:
                     System.out.print("Posição que deseja remover: ");
-                    indice = input.nextInt();
-                    p.remove(indice);
+                    p.setPosicao(input.nextInt());
+                    p.remove(p);
                     p.impresso();
                     break;
                 case 5:
@@ -54,9 +56,8 @@ public class Main {
                     break;
                 case 6:
                     System.out.print("Informe o valor do RAIO: ");
-                    int r = input.nextInt();
-                    //p.circunferencia(p, r);
-                    p.impressoCentroCirc(p, p.circunferencia(p, r));
+                    p.setRaio(input.nextInt());
+                    p.impressoCentroCirc(p, p.circunferencia(p));
                     p.impresso();
                     break;
                 default:
