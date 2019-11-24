@@ -11,10 +11,10 @@ import java.util.Scanner;
  *
  * @author Vitor
  */
-public class ex35 {
+public class ex40 {
 
     static Scanner input = new Scanner(System.in);
-    
+
     public static void main(String[] args) {
         int tl = tam_linha();
         int tc = tam_coluna();
@@ -23,26 +23,27 @@ public class ex35 {
         System.out.println("======");
         resultado(m);
         System.out.println("======");
-        mediaPositivos(m, tl, tc);
+        int e = elemento_verificar();
+        verificaPosition(m, e);
     }
-    
+
     public static int tam_linha() {
         System.out.print("Qual tamanho da Linha? ");
         int tam = input.nextInt();
         return tam;
     }
-    
+
     public static int tam_coluna() {
         System.out.print("Qual tamanho da Coluna? ");
         int tam = input.nextInt();
         return tam;
     }
-    
+
     public static int[][] matriz(int tl, int tc) {
         int[][] m = new int[tl][tc];
         return m;
     }
-    
+
     public static int[][] popula(int[][] m) {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[i].length; j++) {
@@ -52,7 +53,13 @@ public class ex35 {
         }
         return m;
     }
-    
+
+    public static int elemento_verificar() {
+        System.out.print("Qual número verificar na matriz? ");
+        int e = input.nextInt();
+        return e;
+    }
+
     public static void resultado(int[][] m) {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[i].length; j++) {
@@ -61,17 +68,14 @@ public class ex35 {
             System.out.println("");
         }
     }
-    
-    public static void mediaPositivos(int[][] m, int tl, int tc) {
-        int soma = 0;
+
+    public static void verificaPosition(int[][] m, int e) {
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[i].length; j++) {
-                if (m[i][j] > 0) {
-                    soma += m[i][j];
+                if (e == m[i][j]) {
+                    System.out.println("O elemento " + m[i][j] + " está na linha " + i + " coluna " + j);
                 }
             }
         }
-        int media = soma / (tl * tc);
-        System.out.println("Média dos positivos: " + media);
     }
 }

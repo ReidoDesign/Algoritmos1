@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Vitor
  */
 public class ex34 {
 

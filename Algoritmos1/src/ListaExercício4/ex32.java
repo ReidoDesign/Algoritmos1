@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author Vitor
  */
 public class ex32 {
 
@@ -23,7 +23,7 @@ public class ex32 {
         System.out.println("======");
         resultado(m);
         System.out.println("======");
-        resultadoSoma(m);
+        somaImpares(m);
     }
 
     public static int tam_linha() {
@@ -62,7 +62,7 @@ public class ex32 {
         }
     }
 
-    public static void resultadoSoma(int[][] m) {
+    public static void somaImpares(int[][] m) {
         for (int i = 0; i < m.length; i++) {
             int soma = 0;
             for (int j = 0; j < m[i].length; j++) {

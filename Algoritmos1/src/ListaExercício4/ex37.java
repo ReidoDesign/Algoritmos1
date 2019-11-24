@@ -3,13 +3,83 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ListaExercício4;
 
+import java.util.Scanner;
+
 /**
- * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ *
+ * @author Vitor
  */
 public class ex37 {
 
+    static Scanner input = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int tl = tam_linha();
+        int tc = tam_coluna();
+        int[][] m = matriz(tl, tc);
+        int[][] popula = popula(m);
+        System.out.println("======");
+        resultado(m);
+        System.out.println("======");
+        lcNulas(m);
+    }
+
+    public static int tam_linha() {
+        System.out.print("Qual tamanho da Linha? ");
+        int tam = input.nextInt();
+        return tam;
+    }
+
+    public static int tam_coluna() {
+        System.out.print("Qual tamanho da Coluna? ");
+        int tam = input.nextInt();
+        return tam;
+    }
+
+    public static int[][] matriz(int tl, int tc) {
+        int[][] m = new int[tl][tc];
+        return m;
+    }
+
+    public static int[][] popula(int[][] m) {
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m[i].length; j++) {
+                System.out.print("Matriz[" + (i + 1) + "][" + (j + 1) + "] = ");
+                m[i][j] = input.nextInt();
+            }
+        }
+        return m;
+    }
+
+    public static void resultado(int[][] m) {
+        for (int i = 0; i < m.length; i++) {
+            for (int j = 0; j < m[i].length; j++) {
+                System.out.print(m[i][j] + " ");
+            }
+            System.out.println("");
+        }
+    }
+
+    public static void lcNulas(int[][] m) {
+        int cnull = 0;
+        int lnull = 0;
+        for (int i = 0; i < m.length; i++) {
+            int sc = 0;
+            int sl = 0;
+            for (int j = 0; j < m[i].length; j++) {
+                sc += m[j][i];
+                sl += m[i][j];
+            }
+            if (sc == 0) {
+                cnull++;
+            }
+            if (sl == 0) {
+                lnull++;
+            }
+        }
+        System.out.println("Soma de linhas nulas: " + lnull);
+        System.out.println("Soma de colunas nulas: " + cnull);
+    }
 }
