@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class ex32 {
+public class ex33 {
 
     static Scanner input = new Scanner(System.in);
 
@@ -64,13 +64,10 @@ public class ex32 {
 
     public static void resultadoSoma(int[][] m) {
         for (int i = 0; i < m.length; i++) {
-            int soma = 0;
             for (int j = 0; j < m[i].length; j++) {
-                soma = soma + m[j][i];
-            }
-            if (i % 2 == 0) {
-            } else {
-                System.out.println("Soma: " + soma);
+                if (m[i][j] < 0) {
+                    System.out.println("Elemento negativo: " + m[i][j] + " Linha: " + i + " Coluna: " + j);
+                }
             }
         }
     }

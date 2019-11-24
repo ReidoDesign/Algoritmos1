@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-public class ex32 {
+public class ex34 {
 
     static Scanner input = new Scanner(System.in);
 
@@ -63,15 +63,12 @@ public class ex32 {
     }
 
     public static void resultadoSoma(int[][] m) {
+        int soma = 0;
         for (int i = 0; i < m.length; i++) {
-            int soma = 0;
             for (int j = 0; j < m[i].length; j++) {
-                soma = soma + m[j][i];
-            }
-            if (i % 2 == 0) {
-            } else {
-                System.out.println("Soma: " + soma);
+                soma = soma + m[i][j];
             }
         }
+        System.out.println("Soma dos elementos: " + soma);
     }
 }
